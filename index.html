@@ -9,12 +9,16 @@
   <body>
     <main class="app-shell">
       <header class="app-header">
-        <h1>Pomodoro Timer</h1>
+        <h1>Pomodoro Lim Zi Yang</h1>
         <p class="session-label" id="session-label">Focus Session</p>
       </header>
 
       <section class="timer-panel">
         <div class="progress-ring" id="progress-ring">
+          <svg class="progress-ring__svg" viewBox="0 0 220 220" aria-hidden="true">
+            <circle class="progress-ring__background" cx="110" cy="110" r="100" />
+            <circle class="progress-ring__progress" cx="110" cy="110" r="100" />
+          </svg>
           <span class="timer-value" id="timer-value">25:00</span>
         </div>
         <p class="timer-placeholder">Timer placeholder</p>
