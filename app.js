@@ -5,7 +5,7 @@ const RING_STROKE_WIDTH = 16;
 const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
 
 let remainingSeconds = WORK_DURATION_S;
-let timerIntervalId = ;
+let timerIntervalId = null;
 let progressCircle = null;
 let audioContext = null;
 let completedCount = 0;
