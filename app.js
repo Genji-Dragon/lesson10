@@ -19,6 +19,7 @@ function initApp() {
   bindEventListeners();
   initProgressRing();
   updateDisplay();
+  updateButtonStates();
 }
 
 function bindEventListeners() {
@@ -31,6 +32,26 @@ function bindEventListeners() {
   pauseButton.addEventListener('click', pauseTimer);
   resumeButton.addEventListener('click', resumeTimer);
   resetButton.addEventListener('click', resetTimer);
+}
+
+function updateButtonStates() {
+  const startButton = document.getElementById('start-button');
+  const pauseButton = document.getElementById('pause-button');
+  const resumeButton = document.getElementById('resume-button');
+  const isRunning = state.isRunning;
+  const isPaused = !isRunning && timerIntervalId === null && remainingSeconds !== getPhaseDuration();
+
+  if (startButton) {
+    startButton.disabled = isRunning || isPaused;
+  }
+
+  if (pauseButton) {
+    pauseButton.disabled = !isRunning;
+  }
+
+  if (resumeButton) {
+    resumeButton.disabled = !isPaused;
+  }
 }
 
 function formatTime(seconds) {
@@ -56,6 +77,7 @@ function startTimer() {
 
   updateDisplay();
   state.isRunning = true;
+  updateButtonStates();
 
   timerIntervalId = setInterval(() => {
     remainingSeconds -= 1;
@@ -77,6 +99,7 @@ function pauseTimer() {
   clearInterval(timerIntervalId);
   timerIntervalId = null;
   state.isRunning = false;
+  updateButtonStates();
 }
 
 function resumeTimer() {
@@ -99,6 +122,7 @@ function resetTimer() {
 
   updateDisplay();
   updateProgressCircle();
+  updateButtonStates();
 
   const startButton = document.getElementById('start-button');
   if (startButton) {
@@ -131,6 +155,7 @@ function switchSession() {
   }
 
   updateDisplay();
+  updateButtonStates();
 }
 
 function getAudioContext() {

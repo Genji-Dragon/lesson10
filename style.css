@@ -111,11 +111,20 @@ button {
   cursor: pointer;
   background: #1d4ed8;
   color: #ffffff;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, opacity 0.2s ease;
 }
 
 button:hover {
   background: #2563eb;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  background: #1d4ed8;
 }
 
 .status-bar {
